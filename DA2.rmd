@@ -1,0 +1,51 @@
+---
+title: "Digital Assignment 2"
+output: html_document
+---
+
+#### Reg. No: 19BCE1290
+#### Name: Sabrina Marshal
+
+### Reading dataset - Boston Housing
+```{r}
+dt <- read.csv("boston.csv")
+head(dt)
+```
+
+### Parallel coordinates plot
+```{r}
+library(lattice)
+library(dplyr)
+parallelplot(dt,main="Parallel plot",ylab="Columns")
+#with 10 observations for better visibility
+parallelplot(sample_n(dt,10),main="Parallel plot",ylab="Columns")
+```
+
+### Scatter plot matrix
+```{r}
+splom(dt,main="Scatter plot")
+#with 25 observations for better visibility
+splom(sample_n(dt,25),main="Scatter plot")
+```
+
+### Correlogram
+```{r}
+library(ggcorrplot)
+ggcorrplot(cor(dt))
+```
+
+### Star coordinate plot
+```{r}
+stars(dt)
+#with 20 observations for better visibility
+stars(sample_n(dt,20))
+```
+
+### Andrews curve
+```{r}
+library(andrews)
+andrews(dt)
+#with 25 observations for better visibility
+andrews(sample_n(dt,25))
+```
+
